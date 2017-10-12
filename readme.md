@@ -24,6 +24,7 @@ Here's a list of stories to complete:
 
 - Style it up! Make it look pretty!
 - When I delete a user pop open a alert or modal to confirm the action. "Are you sure you want to delete <name>?"
+- Add multiple pages to the view all page. Limit it to 10 users shown per page.
 - Expand the app to include user posts! When I visit a users profile it should list all posts they have made.
 - On the view profile page above the list of posts add a form for creating a new post for a user.
 - Implement a commenting system on each post. Since we don't have a login/registration you will need to include a dropdown or input field to select what user is making the comment.
