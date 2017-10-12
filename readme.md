@@ -1,4 +1,4 @@
-## Knex Assignment (it's a big deal):
+## Knex Assignment (it's kinda a big deal):
 Make sure you install all needed modules for the assignment before hand. If you're unsure what you need. Here's a list:
  - Express
  - EJS
