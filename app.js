@@ -12,8 +12,11 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/users', (req, res) => {
-  knex('users').then((response)=>{
-    res.render('users', {users: response});
+  knex('users').orderBy('id')
+  .then((responseArr) => {
+    res.render('users', {
+      users: responseArr
+    });
   });
 });
 
@@ -26,9 +29,59 @@ app.post('/users', (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      // res.sendStatus(400);
+      res.sendStatus(400);
     });
 
+});
+
+app.get('/users/:id', (req, res) => {
+  knex('users', '*')
+    .where('id', req.params.id)
+    .limit(1)
+    .then((responseArr) => {
+      res.render('user', {
+        user: responseArr[0]
+      });
+    });
+});
+
+//update
+app.post('/users/:id', (req, res)=>{
+  knex('users')
+    .update(req.body)
+    .where('id',req.params.id)
+    .then((result) => {
+      res.redirect(req.originalUrl);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(400);
+    });
+});
+
+app.get('/users/:id/update', (req, res)=>{
+  knex('users', '*')
+    .where('id', req.params.id)
+    .limit(1)
+    .then((responseArr) => {
+      res.render('user-update', {
+        user: responseArr[0]
+      });
+    });
+});
+
+//delete
+app.get('/users/:id/delete', (req, res) => {
+  knex('users')
+    .del()
+    .where('id',req.params.id)
+    .then((result) => {
+      res.redirect('/users');
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(400);
+    });
 });
 
 app.get('/', (req, res) => {

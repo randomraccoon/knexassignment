@@ -5,21 +5,37 @@
     <title>View Users</title>
     <% include partials/links-and-scripts %>
     <script type="text/javascript" src='/js/users.js' defer></script>
+    <link rel="stylesheet" href="/css/users.css">
   </head>
   <body>
     <div class="container">
 
-      <button class="new-user-button" type="button">New User</button>
+      <button class="btn waves-effect waves-light new-user-button" type="button">New User</button>
       <form id='new-user-form' action="/users" method="post">
-        <label for="user_name">Username</label>
-        <input type="text" name="user_name">
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name">
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name">
-        <label for="email">Email</label>
-        <input type="text" name="email">
-        <button type="submit" form='new-user-form' value="Submit">Add User</button>
+        <div class="row">
+          <div class="input-field col s6 m3">
+            <label for="user_name">Username</label>
+            <input type="text" name="user_name">
+          </div>
+          <div class="input-field col s6 m3">
+            <label for="email">Email</label>
+            <input type="text" name="email">
+          </div>
+          <div class="input-field col s6 m3">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name">
+          </div>
+          <div class="input-field col s6 m3">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 center-align">
+            <button class="btn waves-effect waves-light" type="submit" form='new-user-form'>Add User<i class="material-icons right">add</i></button>
+          </div>
+        </div>
+
       </form>
 
       <table class='responsive-table striped'>
@@ -45,5 +61,6 @@
         </tbody>
       </table>
     </div>
+
   </body>
 </html>
